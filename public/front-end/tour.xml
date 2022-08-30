@@ -1,0 +1,1245 @@
+﻿<krpano version="1.20.7" title="Bàu Bàng">
+
+    <include url="skin/vtourskin.xml" />
+    <include url="xml/main.xml" />
+
+    <!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
+    <skin_settings maps="false" maps_type="google" maps_bing_api_key="" maps_google_api_key="" maps_zoombuttons="false" maps_loadonfirstuse="true" gyro="true" gyro_keeplookingdirection="false" webvr="true" webvr_keeplookingdirection="true" webvr_prev_next_hotspots="true" autotour="false" littleplanetintro="false" followmousecontrol="false" title="true" thumbs="true" thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160" thumbs_opened="false" thumbs_text="false" thumbs_dragging="true" thumbs_onhoverscrolling="false" thumbs_scrollbuttons="false" thumbs_scrollindicator="false" thumbs_loop="false" tooltips_buttons="false" tooltips_thumbs="false" tooltips_hotspots="false" tooltips_mapspots="false" deeplinking="false" loadscene_flags="MERGE" loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)" loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)" loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)" loadingtext="loading..." layout_width="100%" layout_maxwidth="814" controlbar_width="-24" controlbar_height="40" controlbar_offset="20" controlbar_offset_closed="-40" controlbar_overlap.no-fractionalscaling="10" controlbar_overlap.fractionalscaling="0" design_skin_images="vtourskin.png" design_bgcolor="0x2D3E50" design_bgalpha="0.8" design_bgborder="0" design_bgroundedge="1" design_bgshadow="0 4 10 0x000000 0.3" design_thumbborder_bgborder="3 0xFFFFFF 1.0" design_thumbborder_padding="2" design_thumbborder_bgroundedge="0" design_text_css="color:#FFFFFF; font-family:Arial;" design_text_shadow="1" />
+
+    <!--
+        For an alternative skin design either change the <skin_settings> values
+        from above or optionally include one of the predefined designs from below.
+    -->
+    <!-- <include url="skin/vtourskin_design_flat_light.xml" /> -->
+    <!-- <include url="skin/vtourskin_design_glass.xml" /> -->
+    <!-- <include url="skin/vtourskin_design_ultra_light.xml" /> -->
+    <!-- <include url="skin/vtourskin_design_117.xml" /> -->
+    <!-- <include url="skin/vtourskin_design_117round.xml" /> -->
+    <!-- <include url="skin/vtourskin_design_black.xml" /> -->
+
+
+    <!-- startup action - load the first scene -->
+    <action name="startup" autorun="onstart">
+        if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
+        loadscene(get(startscene), null, MERGE);
+        if(startactions !== null, startactions() );
+        playsound(s1,music/yurima.mp3, 0,5);
+    </action>
+
+
+
+    <scene name="scene_overview_1" title="KCN Becamex - Bàu Bàng (view 1)" onstart="js(activeMasterplane(overview1));js(info('overview'));js(setTextHoverHotspot());" thumburl="panos/overview/view_1__250m.tiles/thumb.jpg" lat="11.24539667" lng="106.62446139" heading="0.0">
+
+        <view hlookat="182.255" vlookat="18.536" fovtype="MFOV" fov="97.807" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/overview/view_1__250m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/overview/view_1__250m.tiles/pano_%s.jpg" />
+        </image>
+
+        <hotspot name="hotspot_ql_13" style="skin_caotoc" ath="-161.892" atv="3.964" onhover="showtext('Quốc lộ 13',hotspottextstyle);"/>
+        <hotspot name="hotspot_long_thanh" style="skin_sanbay" ath="-132.659" atv="-4.206" onhover="showimage('images\long_thanh.png',hotspottextstyle));"/>
+        <hotspot name="hotspot_cat_lai" style="skin_cang" ath="-126.703" atv="-4.110" onhover="showimage('images\cang_cat_lai.png',hotspottextstyle));"/>
+        <hotspot name="hotspot_hcm" style="skin_TTTM" ath="-88.314" atv="-5.199" onhover="showimage('images\hcm.png',hotspottextstyle));"/>
+        <hotspot name="hotspot_tan_son_nhat" style="skin_sanbay" ath="-80.815" atv="-5.073" onhover="showimage('images\tan_son_nhat.png',hotspottextstyle));"/>
+
+        <hotspot name="hotspot_cho_Bau_Bang_30m" ath="-160.314" atv="12.659" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Bến Xe Bàu Bàng – chợ Bàu Bàng',hotspottextstyle);" onclick="loadscene(scene_cho_Bau_Bang_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_hai_quan" ath="-145.217" atv="16.785" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Hải quan',hotspottextstyle);" onclick="loadscene(scene_hai_quan_pccc_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_PCCC" ath="-149.101" atv="14.617" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('PCCC',hotspottextstyle);" onclick="loadscene(scene_hai_quan_pccc_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_buu_dien_dien_luc_evn" ath="-177.628" atv="15.809" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Bưu điện - Điện lục EVN',hotspottextstyle);" onclick="loadscene(scene_buu_dien_dien_luc_evn,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_truong_tieu_hoc_bau_bang" ath="169.208" atv="13.321" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trường tiểu học',hotspottextstyle);" onclick="loadscene(scene_truong_tieu_hoc_bau_bang,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_trung_tam_hanh_chinh" ath="165.876" atv="10.944" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trung tâm hành chính',hotspottextstyle);" onclick=""/>
+        <hotspot name="hotspot_truong_cap_3" ath="155.297" atv="12.709" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trường cấp 3',hotspottextstyle);" onclick="loadscene(scene_truong_cap_3,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nha_tre" ath="150.890" atv="12.490" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà trẻ',hotspottextstyle);" onclick=""/>
+        <hotspot name="hotspot_nha_may_nuoc_sach_Biwase_15m" ath="134.314" atv="15.892" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy nước sạch Biwase',hotspottextstyle);" onclick="loadscene(scene_nha_may_nuoc_sach_Biwase_15m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nha_o_cong_nhan_5a_20m" ath="92.412" atv="9.434" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà ở công nhân 5A',hotspottextstyle);" onclick="loadscene(scene_nha_o_cong_nhan_5a_20m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nha_o_cong_nhan_lai_hung_20m" ath="-126.169" atv="8.173" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà ở công nhân Lai Hưng',hotspottextstyle);" onclick="loadscene(scene_nha_o_cong_nhan_lai_hung_20m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_san_bong_lai_hung_20m" ath="-122.394" atv="7.649" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Sân bóng đá Lai Hưng',hotspottextstyle);" onclick="loadscene(scene_san_bong_lai_hung_20m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nha_o_xa_hoi_lai_hung_30m" ath="-114.780" atv="6.314" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà ở xã hội',hotspottextstyle);" onclick="loadscene(scene_nha_o_xa_hoi_lai_hung_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nha_may_bw_30m" ath="-103.450" atv="8.690" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy BW',hotspottextstyle);" onclick="loadscene(scene_nha_may_bw_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_truong_tieu_hoc_kim_dong" ath="-108.416" atv="5.580" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trường tiểu học Kim Đồng',hotspottextstyle);" onclick="loadscene(scene_truong_tieu_hoc_kim_dong,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <!-- <hotspot name="hotspot_khu_xlnt_bau_bang" ath="-54.602" atv="9.781" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trạm bơm chuyển cấp nước thải',hotspottextstyle);" onclick="loadscene(scene_khu_xu_ly_nuoc_thai_bau_bang_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/> -->
+        <hotspot name="hotspot_td_bau_bang" ath="-58.659" atv="9.831" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trạm điện (KCN Bàu Bàng)',hotspottextstyle);" onclick="loadscene(scene_td_bau_bang,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_tmn_ad" ath="82.701" atv="7.724" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trường mầm non Ánh Dương',hotspottextstyle);" onclick="loadscene(scene_tmn_ad,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_td_5b" ath="47.341" atv="10.289" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trạm điện 5B',hotspottextstyle);" onclick="loadscene(scene_td_5b,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_ttyt" ath="35.427" atv="7.502" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trung tâm y tế',hotspottextstyle);" onclick="loadscene(scene_ttyt,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nha_o_cong_nhan_5d" ath="21.174" atv="4.518" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà ở công nhân 5D',hotspottextstyle);" onclick="loadscene(scene_nha_o_cong_nhan_5d,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_sb_5d" ath="17.167" atv="3.813" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Sân bóng đá 5D',hotspottextstyle);" onclick="loadscene(scene_sb_5d,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_ca_bau_bang" ath="15.893" atv="6.255" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Công an Huyện Bàu Bàng',hotspottextstyle);" onclick="loadscene(scene_dca,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_vh_tdtt_60m" ath="5.700" atv="7.720" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trung tâm VH-TDTT',hotspottextstyle);" onclick="loadscene(scene_vh_tdtt_60m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nha_o_cong_nhan_5e_20m" ath="-8.519" atv="6.155" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà ở công nhân 5E',hotspottextstyle);" onclick="loadscene(scene_nha_o_cong_nhan_5e_20m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_khu_xu_ly_nuoc_thai_bau_bang_30m" ath="-3.644" atv="6.172" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Khu xử lý nước thải',hotspottextstyle);" onclick="loadscene(scene_khu_xu_ly_nuoc_thai_bau_bang_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_chot_bao_ve_kcn" ath="143.993" atv="14.042" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Chốt bảo vệ KCN',hotspottextstyle);" onclick="loadscene(scene_chot_bao_ve_kcn,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nha_hang_thuy_linh" ath="135.247" atv="13.110" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà hàng Thùy Linh',hotspottextstyle);" onclick="loadscene(scene_nha_hang_thuy_linh,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+        <hotspot name="hotspot_viettel_post" ath="-172.392" atv="13.773" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Viettel Post',hotspottextstyle);" onclick="loadscene(scene_viettel_post,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+        <hotspot name="hotspot_overview_3" style="skin_sp" ath="35.380" atv="-4.756" onhover="showtext('KCN Becamex - Bàu Bàng mở rộng',hotspottextstyle);" onclick="loadscene(scene_overview_3,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+        <hotspot name="hotspot_overview_2" style="skin_sp" ath="41.935" atv="-2.949" onhover="showtext('KCN Becamex - Bàu Bàng (view 2)',hotspottextstyle);" onclick="loadscene(scene_overview_2,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+        <hotspot name="hotspot_overview_1_3" ath="-175.377" atv="1.523" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1_3,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <!-- lo dat -->
+        <!-- <hotspot name="lo_15A" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('15A',hotspottextstyle); set(hotspot[lo_15A].fillalpha, 0.7)" onout="set(hotspot[lo_15A].fillalpha, 0)" onclick="js(infoLodat(lo_15A));">
+
+            <point ath="-125.44" atv="11.11" />
+            <point ath="-119.84" atv="9.56" />
+            <point ath="-115.77" atv="10.15" />
+            <point ath="-120.45" atv="12.07" />
+            <point ath="-125.44" atv="11.11" />
+        </hotspot>
+        <hotspot name="lo_14F" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('14F',hotspottextstyle); set(hotspot[lo_14F].fillalpha, 0.7)" onout="set(hotspot[lo_14F].fillalpha, 0)" onclick="js(infoLodat(lo_14F));">
+
+            <point ath="-101.63" atv="17.38" />
+            <point ath="-100.58" atv="16.14" />
+            <point ath="-86.54" atv="17.02" />
+            <point ath="-86.67" atv="18.41" />
+            <point ath="-101.63" atv="17.38" />
+        </hotspot>
+        <hotspot name="lo_11F" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('11F',hotspottextstyle); set(hotspot[lo_11F].fillalpha, 0.7)" onout="set(hotspot[lo_11F].fillalpha, 0)" onclick="js(infoLodat(lo_11F));">
+
+            <point ath="-54.52" atv="17.18" />
+            <point ath="-51.16" atv="16.05" />
+            <point ath="-48.81" atv="17.12" />
+            <point ath="-48.24" atv="16.78" />
+            <point ath="-37.49" atv="19.26" />
+            <point ath="-43.78" atv="21.11" />
+        </hotspot>
+        <hotspot name="lo_1C6" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('1C6',hotspottextstyle); set(hotspot[lo_1C6].fillalpha, 0.7)" onout="set(hotspot[lo_1C6].fillalpha, 0)" onclick="js(infoLodat(lo_1C6));">
+
+            <point ath="32.93" atv="9.78" />
+            <point ath="34.41" atv="9.42" />
+            <point ath="37.34" atv="9.96" />
+            <point ath="36.40" atv="10.22" />
+            <point ath="32.93" atv="9.78" />
+        </hotspot>
+        <hotspot name="lo_1C7" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('1C7',hotspottextstyle); set(hotspot[lo_1C7].fillalpha, 0.7)" onout="set(hotspot[lo_1C7].fillalpha, 0)" onclick="js(infoLodat(lo_1C7));">
+
+            <point ath="34.74" atv="9.40" />
+            <point ath="36.12" atv="9.03" />
+            <point ath="38.81" atv="9.64" />
+            <point ath="37.43" atv="9.9" />
+            <point ath="34.74" atv="9.40" />
+        </hotspot>
+        <hotspot name="lo_1B9" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('1B9',hotspottextstyle); set(hotspot[lo_1B9].fillalpha, 0.7)" onout="set(hotspot[lo_1B9].fillalpha, 0)" onclick="js(infoLodat(lo_1B9));">
+
+            <point ath="39.81" atv="9.80" />
+            <point ath="41.06" atv="9.55" />
+            <point ath="42.78" atv="9.82" />
+            <point ath="41.66" atv="10.07" />
+            <point ath="39.81" atv="9.80" />
+        </hotspot>
+        <hotspot name="lo_1B2" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('1B2',hotspottextstyle); set(hotspot[lo_1B2].fillalpha, 0.7)" onout="set(hotspot[lo_1B2].fillalpha, 0)" onclick="js(infoLodat(lo_1B2));">
+
+            <point ath="42.66" atv="10.09" />
+            <point ath="43.34" atv="9.75" />
+            <point ath="45.58" atv="10.11" />
+            <point ath="45.00" atv="10.41" />
+            <point ath="42.66" atv="10.09" />
+        </hotspot> -->
+        <!-- lo dat -->
+        <!-- lo dat -->
+        <hotspot name="hotspot_cong_kcn_bau_bang" ath="-175.002" atv="9.778" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Cổng khu công nghiệp bầu bàng',hotspottextstyle);" onclick="loadscene(scene_cong_kcn_bau_bang,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_van_phong_bql_kcn" ath="-177.419" atv="12.044" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Văn phòng BQL KCN',hotspottextstyle);" onclick="js(popupInfo('van_phong_bql_kcn'))" />
+    </scene>
+
+    <scene name="scene_overview_1_3" title="KCN Becamex - Bàu Bàng (view 3)" onstart="js(activeMasterplane(overview3));js(info('overview'));js(setTextHoverHotspot());" thumburl="panos/overview/view_1_3__250m.tiles/thumb.jpg" lat="11.27922306" lng="106.59455389" heading="0.0">
+
+        <view hlookat="-4.664" vlookat="21.117" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/overview/view_1_3__250m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/overview/view_1_3__250m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" style="skin_sp" ath="-1.898" atv="-5.003" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+    </scene>
+
+    <scene name="scene_overview_2" title="KCN Becamex - Bàu Bàng (view 2)" onstart="js(activeMasterplane(overview2));js(info('overview'));js(setTextHoverHotspot());" thumburl="panos/overview/view_2_250m.tiles/thumb.jpg" lat="11.27922306" lng="106.59455389" heading="0.0">
+
+        <view hlookat="-91.218" vlookat="25.899" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/overview/view_2_250m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/overview/view_2_250m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_nm_far_easter_gd_1" ath="-43.687" atv="8.763" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy Far Eastern (giai đoạn 1 – đang xây dựng)',hotspottextstyle);" onclick=""/>
+        <hotspot name="hotspot_VNTT" ath="147.616" atv="15.804" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('VNTT',hotspottextstyle);" onclick="loadscene(scene_VNTT,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_dca" ath="135.935" atv="12.666" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Đồn công an',hotspottextstyle);" onclick="loadscene(scene_dca,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_tram_xu_ly_nuoc_tho_60m" ath="130.672" atv="9.049" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trạm xử lý nước thô',hotspottextstyle);" onclick="loadscene(scene_tram_xu_ly_nuoc_tho_60m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nm_xlnt_mo_rong_30m" ath="34.857" atv="4.971" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy xử lý nước thải mở rộng',hotspottextstyle);" onclick="loadscene(scene_nm_xlnt_mo_rong_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nm_kolon_60m" ath="12.137" atv="8.189" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy KOLON',hotspottextstyle);" onclick="loadscene(scene_nm_kolon_60m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nm_paihong_15m" ath="35.939" atv="11.234" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy PAIHONG',hotspottextstyle);" onclick="loadscene(scene_nm_paihong_15m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nm_polytex_30m" ath="-94.548" atv="14.386" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy FAR EASTERN (nhà máy Polytex)',hotspottextstyle);" onclick="loadscene(scene_nm_polytex_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_tdmr" ath="42.717" atv="5.313" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trạm điện mở rộng',hotspottextstyle);" onclick=""/>
+        <hotspot name="hotspot_overview_1" style="skin_sp" ath="-119.223" atv="-3.280" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+        <hotspot name="hotspot_overview_3" style="skin_sp" ath="51.208" atv="-2.615" onhover="showtext('KCN Becamex - Bàu Bàng mở rộng',hotspottextstyle);" onclick="loadscene(scene_overview_3,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+        <!-- lo dat -->
+        <hotspot name="lo_4D" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('4D',hotspottextstyle); set(hotspot[lo_4D].fillalpha, 0.7)" onout="set(hotspot[lo_4D].fillalpha, 0)" onclick="js(infoLodat(lo_4D));">
+
+            <point ath="-12.85" atv="10.76" />
+            <point ath="-10.21" atv="9.12" />
+            <point ath="3.11" atv="9.58" />
+            <point ath="3.41" atv="11.30" />
+            <point ath="-12.85" atv="10.76" />
+        </hotspot>
+        <hotspot name="lo_4E" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('4E',hotspottextstyle); set(hotspot[lo_4E].fillalpha, 0.7)" onout="set(hotspot[lo_4E].fillalpha, 0)" onclick="js(infoLodat(lo_4E));">
+
+            <point ath="-10.21" atv="9.12" />
+            <point ath="-8.7" atv="7.82" />
+            <point ath="2.83" atv="8.16" />
+            <point ath="3.09" atv="9.40" />
+            <point ath="-10.21" atv="9.12" />
+        </hotspot>
+        <!-- lo dat -->
+    </scene>
+
+    <scene name="scene_overview_3" title="KCN Becamex - Bàu Bàng mở rộng" onstart="js(activeMasterplane(overview3));js(info('overview'));js(setTextHoverHotspot());" thumburl="panos/overview/view_3_250mUD.tiles/thumb.jpg" lat="11.29061889" lng="106.57120083" heading="0.0">
+
+        <view hlookat="-476.888" vlookat="15.518" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/overview/view_3_250mUD.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/overview/view_3_250mUD.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" style="skin_sp" ath="142.689" atv="-5.359" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_overview_2" style="skin_sp" ath="135.350" atv="-2.613" onhover="showtext('KCN Becamex - Bàu Bàng (view 2)',hotspottextstyle);" onclick="loadscene(scene_overview_2,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+        <!-- <hotspot name="lo_9" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('9',hotspottextstyle); set(hotspot[lo_9].fillalpha, 0.7)" onout="set(hotspot[lo_9].fillalpha, 0)" onclick="js(infoLodat(lo_9));">
+
+            <point ath="63.21" atv="44.57" />
+            <point ath="76.42" atv="17.63" />
+            <point ath="85.94" atv="18.23" />
+            <point ath="84.38" atv="47.38" />
+            <point ath="63.21" atv="44.57" />
+        </hotspot> -->
+
+        <hotspot name="lo_7_8" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('7_8',hotspottextstyle); set(hotspot[lo_7_8].fillalpha, 0.7)" onout="set(hotspot[lo_7_8].fillalpha, 0)" onclick="js(infoLodat(lo_7_8));">
+
+            <point ath="107.31" atv="82.46" />
+            <point ath="87.16" atv="12.64" />
+            <point ath="120.24" atv="10.21" />
+            <point ath="174.14" atv="18.79" />
+            <point ath="107.31" atv="82.46" />
+        </hotspot>
+
+        <hotspot name="lo_10" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('10',hotspottextstyle); set(hotspot[lo_10].fillalpha, 0.7)" onout="set(hotspot[lo_10].fillalpha, 0)" onclick="js(infoLodat(lo_10));">
+
+            <point ath="176.99" atv="6.40" />
+            <point ath="176.84" atv="5.43" />
+            <point ath="178.44" atv="5.31" />
+            <point ath="179.61" atv="6.25" />
+            <point ath="176.99" atv="6.40" />
+        </hotspot>
+
+        <hotspot name="lo_11" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('11',hotspottextstyle); set(hotspot[lo_11].fillalpha, 0.7)" onout="set(hotspot[lo_11].fillalpha, 0)" onclick="js(infoLodat(lo_11));">
+
+            <point ath="177.17" atv="9.11" />
+            <point ath="177.04" atv="6.95" />
+            <point ath="-179.86" atv="6.92" />
+            <point ath="-179.54" atv="7.89" />
+            <point ath="-175.56" atv="7.85" />
+            <point ath="-175.90" atv="7.87" />
+            <point ath="-174.66" atv="9.06" />
+            <point ath="177.17" atv="9.11" />
+        </hotspot>
+        <hotspot name="lo_12B" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('12B',hotspottextstyle); set(hotspot[lo_12B].fillalpha, 0.7)" onout="set(hotspot[lo_12B].fillalpha, 0)" onclick="js(infoLodat(lo_12B));">
+
+            <point ath="177.20" atv="10.52" />
+            <point ath="177.20" atv="9.31" />
+            <point ath="-168.96" atv="9.2" />
+            <point ath="-167.72" atv="10.11" />
+            <point ath="177.20" atv="10.52" />
+        </hotspot>
+        <hotspot name="lo_12D" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('12D',hotspottextstyle); set(hotspot[lo_12D].fillalpha, 0.7)" onout="set(hotspot[lo_12D].fillalpha, 0)" onclick="js(infoLodat(lo_12D));">
+
+            <point ath="-165.35" atv="11.66" />
+            <point ath="-168.71" atv="9.24" />
+            <point ath="-162.57" atv="9.19" />
+            <point ath="-159.11" atv="11.19" />
+            <point ath="-165.35" atv="11.66" />
+        </hotspot>
+        <hotspot name="lo_12E" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('12E',hotspottextstyle); set(hotspot[lo_12E].fillalpha, 0.7)" onout="set(hotspot[lo_12E].fillalpha, 0)" onclick="js(infoLodat(lo_12E));">
+
+            <point ath="-158.77" atv="11.13" />
+            <point ath="-162.30" atv="9.19" />
+            <point ath="-156.64" atv="8.86" />
+            <point ath="-151.71" atv="10.43" />
+            <point ath="-158.77" atv="11.13" />
+        </hotspot>
+        <hotspot name="lo_13A" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('13A',hotspottextstyle); set(hotspot[lo_13A].fillalpha, 0.7)" onout="set(hotspot[lo_13A].fillalpha, 0)" onclick="js(infoLodat(lo_13A));">
+
+            <point ath="-160.75" atv="16.89" />
+            <point ath="-166.74" atv="12.08" />
+            <point ath="-160.55" atv="11.65" />
+            <point ath="-153.75" atv="15.89" />
+            <point ath="-160.75" atv="16.89" />
+        </hotspot>
+        <hotspot name="lo_13B" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('13B',hotspottextstyle); set(hotspot[lo_13B].fillalpha, 0.7)" onout="set(hotspot[lo_13B].fillalpha, 0)" onclick="js(infoLodat(lo_13B));">
+
+            <point ath="-153.60" atv="15.80" />
+            <point ath="-160.22" atv="11.70" />
+            <point ath="-154.52" atv="11.18" />
+            <point ath="-146.26" atv="14.52" />
+            <point ath="-153.60" atv="15.80" />
+        </hotspot>
+        <hotspot name="lo_13C" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('13C',hotspottextstyle); set(hotspot[lo_13C].fillalpha, 0.7)" onout="set(hotspot[lo_13C].fillalpha, 0)" onclick="js(infoLodat(lo_13C));">
+
+            <point ath="-146.12" atv="14.43" />
+            <point ath="-154.43" atv="11.21" />
+            <point ath="-150.12" atv="10.72" />
+            <point ath="-140.28" atv="13.10" />
+            <point ath="-146.12" atv="14.43" />
+        </hotspot>
+        <hotspot name="hotspot_overview_3_2" ath="176.323" atv="10.270" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng mở rộng 2',hotspottextstyle);" onclick="loadscene(scene_overview_3_2,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+
+    </scene>
+
+    <scene name="scene_overview_3_2" title="KCN Becamex - Bàu Bàng mở rộng 2" onstart="js(activeMasterplane(overview4));js(info('overview'));js(setTextHoverHotspot());" thumburl="panos/overview/overview_3_2.tiles/thumb.jpg" lat="11.27973694" lng="106.57343528" heading="0.0">
+
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/overview/overview_3_2.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/overview/overview_3_2.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_3_3" ath="-68.525" atv="2.851" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng mở rộng 3',hotspottextstyle);" onclick="loadscene(scene_overview_3_3,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+        <hotspot name="hotspot_overview_3" ath="89.095" atv="9.659" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng mở rộng',hotspottextstyle);" onclick="loadscene(scene_overview_3,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+
+        <hotspot name="lo_c_11_cn" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('C-11-CN: ~13,8 ha',hotspottextstyle); set(hotspot[lo_c_11_cn].fillalpha, 0.7)" onout="set(hotspot[lo_c_11_cn].fillalpha, 0)" onclick="js(infoLodat(lo_c_11_cn));">
+
+            <point ath="-88.88" atv="17.26" />
+            <point ath="-73.13" atv="15.96" />
+            <point ath="-66.84" atv="21.47" />
+            <point ath="-54.27" atv="19.10" />
+            <point ath="-48.17" atv="23.54" />
+            <point ath="-87.17" atv="29.64" />
+            <point ath="-88.88" atv="17.26" />
+        </hotspot>
+
+        <hotspot name="lo_c_12_cn" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('C-12-CN: ~15 ha',hotspottextstyle); set(hotspot[lo_c_12_cn].fillalpha, 0.7)" onout="set(hotspot[lo_c_12_cn].fillalpha, 0)" onclick="js(infoLodat(lo_c_12_cn));">
+
+            <point ath="-55.96" atv="27.73" />
+            <point ath="-28.05" atv="15.76" />
+            <point ath="-3.06" atv="18.71" />
+            <point ath="-5.92" atv="42.38" />
+            <point ath="-55.96" atv="27.73" />
+
+        </hotspot>
+
+        <hotspot name="lo_c_13_cn" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('C-13-CN: ~16,3 ha',hotspottextstyle); set(hotspot[lo_c_13_cn].fillalpha, 0.7)" onout="set(hotspot[lo_c_13_cn].fillalpha, 0)" onclick="js(infoLodat(lo_c_13_cn));">
+
+            <point ath="0.12" atv="42.48" />
+            <point ath="0.36" atv="18.13" />
+            <point ath="24.79" atv="15.69" />
+            <point ath="54.99" atv="28.28" />
+            <point ath="0.12" atv="42.48" />
+        </hotspot>
+
+
+
+    </scene>
+
+    <scene name="scene_overview_3_3" title="KCN Becamex - Bàu Bàng mở rộng 3" onstart="js(activeMasterplane(overview4));js(info('overview'));js(setTextHoverHotspot());" thumburl="panos/overview/overview_3_3.tiles/thumb.jpg" lat="11.25908861" lng="106.56689639" heading="0.0">
+
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/overview/overview_3_3.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/overview/overview_3_3.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_3_2" ath="22.019" atv="5.961" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng mở rộng 2',hotspottextstyle);" onclick="loadscene(scene_overview_3_2,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+    </scene>
+
+    <!-- KCN Bau Bang-->
+    <scene name="scene_cho_Bau_Bang_30m" title="Bến Xe Bàu Bàng – chợ Bàu Bàng (30m)" onstart="js(activeMasterplane(overview1));js(info('cho_bau_bang'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang/view_cho_Bau_Bang_30m_.tiles/thumb.jpg" lat="11.24030306" lng="106.63315306" heading="0.0">
+
+        <view hlookat="134.928" vlookat="32.874" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang/view_cho_Bau_Bang_30m_.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang/view_cho_Bau_Bang_30m_.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="39.710" atv="-1.924" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_ben_xe_15m" ath="154.763" atv="12.639" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Bến Xe Bàu Bàng – chợ Bàu Bàng (15m)',hotspottextstyle);" onclick="loadscene(scene_ben_xe_15m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_ben_xe_15m" title="Bến Xe Bàu Bàng – chợ Bàu Bàng (15m)" onstart="js(activeMasterplane(overview1));js(info('ben_xe'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang/view_ben_xe_15m.tiles/thumb.jpg" lat="11.24075861" lng="106.63461806" heading="0.0">
+
+        <view hlookat="23.633" vlookat="15.401" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang/view_ben_xe_15m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang/view_ben_xe_15m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_cho_bau_bang_30m" ath="23.653" atv="-6.431" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Bến Xe Bàu Bàng – chợ Bàu Bàng (30m)',hotspottextstyle);" onclick="loadscene(scene_cho_bau_bang_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+        <hotspot name="hotspot_ben_xe_bau_bang" ath="-16.140" atv="32.007" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Bến Xe Bàu Bàng – chợ Bàu Bàng',hotspottextstyle);" onclick="loadscene(scene_ben_xe_bau_bang,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+    </scene>
+
+    <scene name="scene_ben_xe_Bau_Bang" title="Bến Xe Bàu Bàng – chợ Bàu Bàng" onstart="js(activeMasterplane(overview1));js(info('ben_xe'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang/view_ben_xe_Bau_Bang_.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="-6.083" vlookat="-3.928" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang/view_ben_xe_Bau_Bang_.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang/view_ben_xe_Bau_Bang_.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_cho_Bau_Bang_15m" ath="-13.076" atv="-19.517" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Bến Xe Bàu Bàng – chợ Bàu Bàng (15m)',hotspottextstyle);" onclick="loadscene(scene_ben_xe_15m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_hai_quan_pccc_30m" title="Hải quan - PCCC (30m)" onstart="js(activeMasterplane(overview1));js(info('pccc'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang/view_Hai_Quan_PCCC_30m.tiles/thumb.jpg" lat="11.23989917" lng="106.63128889" heading="0.0">
+
+        <view hlookat="82.862" vlookat="26.872" fovtype="MFOV" fov="106.686" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang/view_Hai_Quan_PCCC_30m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang/view_Hai_Quan_PCCC_30m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="60.457" atv="-3.723" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_PCCC" ath="127.520" atv="28.725" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('PCCC',hotspottextstyle);" onclick="loadscene(scene_pccc,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_hai_quan" ath="44.554" atv="17.423" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Hải quan',hotspottextstyle);" onclick="loadscene(scene_hai_quan,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+
+    </scene>
+
+    <scene name="scene_hai_quan" title="Hải quan" onstart="js(activeMasterplane(overview1));js(info('Hai_quan'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang/view_doi_nghiep_vu_Hai_Quan_Bau_Bang.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="42.598" vlookat="-0.207" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang/view_doi_nghiep_vu_Hai_Quan_Bau_Bang.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang/view_doi_nghiep_vu_Hai_Quan_Bau_Bang.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_hai_quan_pccc" ath="21.170" atv="-21.781" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Hải quan - PCCC (30m)',hotspottextstyle);" onclick="loadscene(scene_hai_quan_pccc_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_PCCC" title="PCCC" onstart="js(activeMasterplane(overview1));js(info('pccc'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang/view_PCCC.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang/view_PCCC.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang/view_PCCC.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_hai_quan_pccc" ath="-45.279" atv="-15.290" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Hải quan - PCCC (30m)',hotspottextstyle);" onclick="loadscene(scene_hai_quan_pccc_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+
+
+    <scene name="scene_td_bau_bang" title="Trạm điện (KCN Bàu Bàng) 50m " onstart="js(activeMasterplane(overview1));js(info('tram_dien'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang/view_tram_dien_duong_N1_50m_.tiles/thumb.jpg" lat="11.23501222" lng="106.61699861" heading="0.0">
+
+        <view hlookat="163.566" vlookat="34.786" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang/view_tram_dien_duong_N1_50m_.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang/view_tram_dien_duong_N1_50m_.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="-7.153" atv="-6.620" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_viettel_post" title="Viettel post" onstart="js(activeMasterplane(overview1));js(info('viettel_post'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang/view_viettel_post.tiles/thumb.jpg" lat="11.23501222" lng="106.61699861" heading="0.0">
+
+        <view hlookat="2.952" vlookat="-2.529" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang/view_viettel_post.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang/view_viettel_post.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="-79.503" atv="-10.403" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_nha_hang_thuy_linh" title="Nhà hàng Thùy Linh" onstart="js(activeMasterplane(overview1));js(info('nha_hang_thuy_linh'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang/view_nha_hang_thuy_linh.tiles/thumb.jpg" lat="11.23501222" lng="106.61699861" heading="0.0">
+
+        <view hlookat="-11.048" vlookat="16.129" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang/view_nha_hang_thuy_linh.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang/view_nha_hang_thuy_linh.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="-7.153" atv="-6.620" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_chot_bao_ve_kcn" title="Chốt bảo vệ KCN" onstart="js(activeMasterplane(overview1));js(info('chot_bao_ve_kcn'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang/view_chot_bao_ve_kcn.tiles/thumb.jpg" lat="11.23501222" lng="106.61699861" heading="0.0">
+
+        <view hlookat="91.996" vlookat="34.059" fovtype="MFOV" fov="128.129" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang/view_chot_bao_ve_kcn.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang/view_chot_bao_ve_kcn.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="-16.185" atv="-3.434" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <!-- KCN Bau Bang end -->
+    <!-- KCN Bau Bang mo rong -->
+    <scene name="scene_nm_kolon_60m" title="Nhà máy KOLON (60m)" onstart="js(activeMasterplane(overview2));js(info('kolon'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang_mo_rong/view_nha_may_KOLON_60m_.tiles/thumb.jpg" lat="11.28076417" lng="106.57918306" heading="0.0">
+
+        <view hlookat="32.877" vlookat="25.637" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_KOLON_60m_.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_KOLON_60m_.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_2" ath="-44.332" atv="-4.484" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 2)',hotspottextstyle);" onclick="loadscene(scene_overview_2,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+        <hotspot name="hotspot_nm_kolon_1" ath="3.922" atv="39.683" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy KOLON (1)',hotspottextstyle);" onclick="loadscene(scene_nm_kolon_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nm_paihong_15m" ath="-109.839" atv="0.231" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy PAIHONG',hotspottextstyle);" onclick="loadscene(scene_nm_paihong_15m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_nm_kolon_1" title="Nhà máy KOLON (1)" onstart="js(activeMasterplane(overview2));js(info('kolon'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang_mo_rong/view_nha_may_Kolon_1.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_Kolon_1.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_Kolon_1.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_nm_kolon_60m" ath="175.078" atv="-12.595" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy KOLON 60m',hotspottextstyle);" onclick="loadscene(scene_nm_kolon_60m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nm_kolon_2" ath="71.223" atv="-0.249" style="skin_hotspotstyle" onhover="showtext('Nhà máy KOLON (2)',hotspottextstyle);" onclick="loadscene(scene_nm_kolon_2,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_nm_kolon_2" title="Nhà máy KOLON (2)" onstart="js(activeMasterplane(overview2));js(info('kolon'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang_mo_rong/view_nha_may_Kolon_2.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="40.098" vlookat="-13.640" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_Kolon_2.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_Kolon_2.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_nm_kolon_1" ath="-160.841" atv="-2.106" style="skin_hotspotstyle" onhover="showtext('Nhà máy KOLON (1)',hotspottextstyle);" onclick="loadscene(scene_nm_kolon_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nm_kolon_3" ath="-55.532" atv="-0.663" style="skin_hotspotstyle" onhover="showtext('Nhà máy KOLON (3)',hotspottextstyle);" onclick="loadscene(scene_nm_kolon_3,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nm_kolon_20m" ath="-31.044" atv="0.332" style="skin_hotspotstyle" onhover="showtext('Nhà máy KOLON 20m',hotspottextstyle);" onclick="loadscene(scene_nm_kolon_20m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_nm_kolon_3" title="Nhà máy KOLON 3" onstart="js(activeMasterplane(overview2));js(info('kolon'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang_mo_rong/view_nha_may_Kolon_3.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_Kolon_3.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_Kolon_3.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_nm_kolon_2" ath="157.042" atv="3.882" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy KOLON (2)',hotspottextstyle);" onclick="loadscene(scene_nm_kolon_2,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+    </scene>
+
+    <scene name="scene_nm_kolon_20m" title="Nhà máy KOLON 20m " onstart="js(activeMasterplane(overview2));js(info('kolon'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang_mo_rong/view_nha_may_KOLON_20m_.tiles/thumb.jpg" lat="11.27754056" lng="106.57523667" heading="0.0">
+
+        <view hlookat="-56.617" vlookat="19.691" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_KOLON_20m_.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_KOLON_20m_.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_nm_kolon_2" ath="-7.632" atv="2.888" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy KOLON (2)',hotspottextstyle);" onclick="loadscene(scene_nm_kolon_2,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_nm_paihong_15m" title="Nhà máy PAIHONG (15m)" onstart="js(activeMasterplane(overview2));js(info('paihong'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang_mo_rong/view_nha_may_PAI_HONG_15m.tiles/thumb.jpg" lat="11.28422250" lng="106.58367806" heading="0.0">
+
+        <view hlookat="178.813" vlookat="19.289" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_PAI_HONG_15m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_PAI_HONG_15m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_2" ath="44.587" atv="-5.804" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 2)',hotspottextstyle);" onclick="loadscene(scene_overview_2,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+        <hotspot name="hotspot_nm_paihong_30m" ath="151.744" atv="0.831" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy PAIHONG (30m)',hotspottextstyle);" onclick="loadscene(scene_nm_paihong_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nm_kolon_60m" ath="144.143" atv="-1.033" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy KOLON',hotspottextstyle);" onclick="loadscene(scene_nm_kolon_60m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+
+    </scene>
+
+    <scene name="scene_nm_paihong_30m" title="Nhà máy PAIHONG (30m)" onstart="js(activeMasterplane(overview2));js(info('paihong'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang_mo_rong/view_nha_may_PAI_HONG_30m.tiles/thumb.jpg" lat="11.28185250" lng="106.58075083" heading="0.0">
+
+        <view hlookat="-151.317" vlookat="18.674" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_PAI_HONG_30m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_PAI_HONG_30m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_nm_paihong_15m" ath="-34.889" atv="-2.138" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy PAIHONG (15m)',hotspottextstyle);" onclick="loadscene(scene_nm_paihong_15m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_nm_polytex_30m" title="Nhà máy FAR EASTERN (30m)" onstart="js(activeMasterplane(overview2));js(info('far_eastern'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang_mo_rong/view_nha_may_Polytex_30m.tiles/thumb.jpg" lat="11.26948972" lng="106.60316833" heading="0.0">
+
+        <view hlookat="-1.341" vlookat="15.503" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_Polytex_30m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_Polytex_30m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_2" ath="-0.400" atv="-8.044" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 2)',hotspottextstyle);" onclick="loadscene(scene_overview_2,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+        <hotspot name="hotspot_nm_polytex_100m" ath="-0.211" atv="2.469" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy FAR EASTERN (100m)',hotspottextstyle);" onclick="loadscene(scene_nm_polytex_100m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_nm_polytex_100m" title="Nhà máy FAR EASTERN (100m)" onstart="js(activeMasterplane(overview2));js(info('far_eastern'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang_mo_rong/view_nha_may_Polytex_100m_.tiles/thumb.jpg" lat="11.26898556" lng="106.60016500" heading="0.0">
+
+        <view hlookat="-88.073" vlookat="27.804" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_Polytex_100m_.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_Polytex_100m_.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_nm_polytex_30m" ath="176.874" atv="17.308" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy FAR EASTERN (30m)',hotspottextstyle);" onclick="loadscene(scene_nm_polytex_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_nm_xlnt_mo_rong_30m" title="Trạm bơm chuyển cấp nước thải (mở rộng) (30m)" onstart="js(activeMasterplane(overview2));js(info('KCN_Becmex_2'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang_mo_rong/view_nha_may_xu_ly_nuoc_thai_mo_rong_30m.tiles/thumb.jpg" lat="11.28962083" lng="106.56690111" heading="0.0">
+
+        <view hlookat="78.247" vlookat="32.928" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_xu_ly_nuoc_thai_mo_rong_30m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang_mo_rong/view_nha_may_xu_ly_nuoc_thai_mo_rong_30m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_2" ath="-134.992" atv="-6.634" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 2)',hotspottextstyle);" onclick="loadscene(scene_overview_2,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+    </scene>
+    <!-- KCN Bau Bang mo rong end -->
+    <!-- KCN 5A -->
+    <scene name="scene_buu_dien_dien_luc_evn" title="Bưu Điện - Điện lực EVN Bàu Bàng (30m)" onstart="js(activeMasterplane(overview1));js(info(''));js(setTextHoverHotspot());" thumburl="panos/KDC_5A/view_Dien_Luc_Buu_Dien_Bau_Bang_30m.tiles/thumb.jpg" lat="11.24456111" lng="106.62914972" heading="0.0">
+
+        <view hlookat="-6.021" vlookat="29.700" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5A/view_Dien_Luc_Buu_Dien_Bau_Bang_30m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5A/view_Dien_Luc_Buu_Dien_Bau_Bang_30m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="-88.326" atv="-6.860" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_dien_luc_evn" ath="7.308" atv="44.653" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Điện lực EVN Bàu Bàng',hotspottextstyle);" onclick="loadscene(scene_dien_luc_evn,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_Buu_Dien_Bau_Bang" ath="-47.949" atv="35.805" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onclick="loadscene(scene_Buu_Dien_Bau_Bang,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_Buu_Dien_Bau_Bang" title="Bưu điện Bàu Bàng" onstart="js(activeMasterplane(overview1));js(info('buu_dien'));js(setTextHoverHotspot());" thumburl="panos/KDC_5A/view_Buu_Dien_Bau_Bang.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="10.172" vlookat="-11.681" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5A/view_Buu_Dien_Bau_Bang.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5A/view_Buu_Dien_Bau_Bang.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_buu_dien_dien_luc_evn" ath="163.667" atv="-20.000" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_buu_dien_dien_luc_evn,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+    </scene>
+
+    <scene name="scene_dien_luc_evn" title="Điện lực EVN Bàu Bàng" onstart="js(activeMasterplane(overview1));js(info('evn'));js(setTextHoverHotspot());" thumburl="panos/KDC_5A/view_Dien_Luc_Bau_Bang.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5A/view_Dien_Luc_Bau_Bang.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5A/view_Dien_Luc_Bau_Bang.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_buu_dien_dien_luc_evn" ath="-25.151" atv="-18.280" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Điện lực EVN Bàu Bàng (30m)',hotspottextstyle);" onclick="loadscene(scene_buu_dien_dien_luc_evn,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_nha_o_cong_nhan_5a_20m" title="Nhà ở công nhân 5A 20m" onstart="js(activeMasterplane(overview1));js(info('nha_o_cn'));js(setTextHoverHotspot());" thumburl="panos/KDC_5A/view_khu_nha_o_cong_nhan_5A_20m.tiles/thumb.jpg" lat="11.25984333" lng="106.62743333" heading="0.0">
+
+        <view hlookat="177.814" vlookat="28.052" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5A/view_khu_nha_o_cong_nhan_5A_20m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5A/view_khu_nha_o_cong_nhan_5A_20m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="147.416" atv="-6.748" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_tram_xu_ly_nuoc_tho_60m" title="Trạm xử lý nước thô (60m)" onstart="js(activeMasterplane(overview1));js(info('tram_xu_ly_nuoc_tho'));js(setTextHoverHotspot());" thumburl="panos/KDC_5A/view_tram_cap_nuoc_sach_BIWASE_60m.tiles/thumb.jpg" lat="11.29276194" lng="106.60081361" heading="0.0">
+
+        <view hlookat="13.810" vlookat="29.827" fovtype="MFOV" fov="113.790" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5A/view_tram_cap_nuoc_sach_BIWASE_60m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5A/view_tram_cap_nuoc_sach_BIWASE_60m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="105.586" atv="-2.508" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_tram_xu_ly_nuoc_tho_30m" ath="28.936" atv="10.651" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trạm xử lý nước thô (30m)',hotspottextstyle);" onclick="loadscene(scene_tram_xu_ly_nuoc_tho_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+    </scene>
+
+    <scene name="scene_tram_xu_ly_nuoc_tho_30m" title="Trạm xử lý nước thô (30m)" onstart="js(activeMasterplane(overview1));js(info('tram_xu_ly_nuoc_tho'));js(setTextHoverHotspot());" thumburl="panos/KDC_5A/view_tram_cap_nuoc_sach_BIWASE_30m.tiles/thumb.jpg" lat="11.29201722" lng="106.60222528" heading="0.0">
+
+        <view hlookat="183.176" vlookat="31.032" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5A/view_tram_cap_nuoc_sach_BIWASE_30m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5A/view_tram_cap_nuoc_sach_BIWASE_30m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_tram_xu_ly_nuoc_tho_60m" ath="27.392" atv="-1.997" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trạm xử lý nước thô (60m)',hotspottextstyle);" onclick="loadscene(scene_tram_xu_ly_nuoc_tho_60m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+        <hotspot name="hotspot_tram_xu_ly_nuoc_tho_1" ath="-154.478" atv="37.745" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trạm xử lý nước thô (1)',hotspottextstyle);" onclick="loadscene(scene_tram_xu_ly_nuoc_tho_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+    </scene>
+
+    <scene name="scene_tram_xu_ly_nuoc_tho_1" title="Trạm xử lý nước thô (1)" onstart="js(activeMasterplane(overview1));js(info('tram_xu_ly_nuoc_tho'));js(setTextHoverHotspot());" thumburl="panos/KDC_5A/view_tram_cap_nuoc_sach_Biwase_1.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="-184.550" vlookat="6.286" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5A/view_tram_cap_nuoc_sach_Biwase_1.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5A/view_tram_cap_nuoc_sach_Biwase_1.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_tram_xu_ly_nuoc_tho_30m" ath="-0.960" atv="-21.116" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trạm xử lý nước thô (30m)',hotspottextstyle);" onclick="loadscene(scene_tram_xu_ly_nuoc_tho_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+        <hotspot name="hotspot_tram_xu_ly_nuoc_tho_2" ath="-178.298" atv="-8.110" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trạm xử lý nước thô (2)',hotspottextstyle);" onclick="loadscene(scene_tram_xu_ly_nuoc_tho_2,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+    </scene>
+
+    <scene name="scene_tram_xu_ly_nuoc_tho_2" title="Trạm xử lý nước thô (2)" onstart="js(activeMasterplane(overview1));js(info('tram_xu_ly_nuoc_tho'));js(setTextHoverHotspot());" thumburl="panos/KDC_5A/view_tram_cap_nuoc_sach_Biwase_2.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="-5.272" vlookat="26.252" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5A/view_tram_cap_nuoc_sach_Biwase_2.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5A/view_tram_cap_nuoc_sach_Biwase_2.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_tram_xu_ly_nuoc_tho_1" ath="-179.788" atv="0.468" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trạm xử lý nước thô (1)',hotspottextstyle);" onclick="loadscene(scene_tram_xu_ly_nuoc_tho_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+    </scene>
+
+    <scene name="scene_nha_may_nuoc_sach_Biwase_15m" title="Nhà máy nước sạch Biwase 15m" onstart="js(activeMasterplane(overview1));js(info('Biwase'));js(setTextHoverHotspot());" thumburl="panos/KDC_5A/view_nha_may_nuoc_sach_Biwase_15m.tiles/thumb.jpg" lat="11.25063167" lng="106.63141111" heading="0.0">
+
+        <view hlookat="1.344" vlookat="20.670" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5A/view_nha_may_nuoc_sach_Biwase_15m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5A/view_nha_may_nuoc_sach_Biwase_15m.tiles/pano_%s.jpg" />
+        </image>
+
+        <hotspot name="hotspot_overview_1" ath="-29.478" atv="-5.484" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+    <scene name="scene_truong_cap_3" title="Trường cấp 3 (15m)" onstart="js(activeMasterplane(overview1));js(info('cap_3'));js(setTextHoverHotspot());" thumburl="panos/KDC_5A/view_truong_THPT_Bau_Bang_15m.tiles/thumb.jpg" lat="11.24915000" lng="106.63519111" heading="0.0">
+
+        <view hlookat="-2.219" vlookat="25.575" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5A/view_truong_THPT_Bau_Bang_15m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5A/view_truong_THPT_Bau_Bang_15m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="-33.329" atv="-6.318" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_truong_tieu_hoc_bau_bang" title="Trường tiểu học (15m)" onstart="js(activeMasterplane(overview1));js(info('tieu_hoc'));js(setTextHoverHotspot());" thumburl="panos/KDC_5A/view_truong_tieu_hoc_Bau_Bang_15m.tiles/thumb.jpg" lat="11.24641833" lng="106.63555056" heading="0.0">
+
+        <view hlookat="117.293" vlookat="13.436" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5A/view_truong_tieu_hoc_Bau_Bang_15m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5A/view_truong_tieu_hoc_Bau_Bang_15m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="99.326" atv="-12.016" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <!-- KCN 5A end-->
+    <!-- KCN 5B -->
+    <scene name="scene_nha_o_cong_nhan_5B_20m" title="Nhà ở công nhân 5B (20m)" onstart="js(activeMasterplane(overview1));js(info('nha_o_cn'));js(setTextHoverHotspot());" thumburl="panos/KDC_5B/view_khu_nha_o_cong_nhan_5B_20m.tiles/thumb.jpg" lat="11.26160667" lng="106.62469222" heading="0.0">
+
+        <view hlookat="178.663" vlookat="10.694" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5B/view_khu_nha_o_cong_nhan_5B_20m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5B/view_khu_nha_o_cong_nhan_5B_20m.tiles/pano_%s.jpg" />
+        </image>
+
+    </scene>
+
+    <scene name="scene_td_5b" title="Trạm điện 5B 50m" onstart="js(activeMasterplane(overview1));js(info('tram_dien'));js(setTextHoverHotspot());" thumburl="panos/KDC_5B/view_tram_dien_duong_D6__50m.tiles/thumb.jpg" lat="11.25531194" lng="106.61664472" heading="0.0">
+
+        <view hlookat="-35.161" vlookat="30.196" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5B/view_tram_dien_duong_D6__50m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5B/view_tram_dien_duong_D6__50m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="160.891" atv="-0.924" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_tmn_ad" title="Trường mầm non Ánh Dương 15m" onstart="js(activeMasterplane(overview1));js(info('anh_duong'));js(setTextHoverHotspot());" thumburl="panos/KDC_5B/view_truong_man_non_Anh_Duong_15m.tiles/thumb.jpg" lat="11.26230972" lng="106.62399778" heading="0.0">
+
+        <view hlookat="-258.748" vlookat="22.598" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5B/view_truong_man_non_Anh_Duong_15m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5B/view_truong_man_non_Anh_Duong_15m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="85.014" atv="-8.175" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+    <!-- KCN 5B end-->
+    <!-- KCN 5C -->
+    <scene name="scene_nha_o_cong_nhan_5C_30m" title="Nhà ở công nhân 5C ( Nhà ở chuyên gia Polytex) 30m " onstart="js(activeMasterplane(overview1));js(info('nha_o_cn'));js(setTextHoverHotspot());" thumburl="panos/KDC_5C/view_khu_nha_o_cong_nhan_5C_(_nha_o_chuyen_gia_Polytex)_30m_.tiles/thumb.jpg" lat="11.26960778" lng="106.60461694" heading="0.0">
+
+        <view hlookat="617.047" vlookat="26.394" fovtype="MFOV" fov="91.410" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5C/view_khu_nha_o_cong_nhan_5C_(_nha_o_chuyen_gia_Polytex)_30m_.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5C/view_khu_nha_o_cong_nhan_5C_(_nha_o_chuyen_gia_Polytex)_30m_.tiles/pano_%s.jpg" />
+        </image>
+
+    </scene>
+
+    <scene name="scene_ttyt" title="Trung tâm y tế 10m" onstart="js(activeMasterplane(overview1));js(info('y_te'));js(setTextHoverHotspot());" thumburl="panos/KDC_5C/view_trung_tam_y_te_Bau_Bang_10m.tiles/thumb.jpg" lat="11.25869389" lng="106.60957472" heading="0.0">
+
+        <view hlookat="92.897" vlookat="15.187" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5C/view_trung_tam_y_te_Bau_Bang_10m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5C/view_trung_tam_y_te_Bau_Bang_10m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="72.610" atv="-7.200" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+    <!-- KCN 5C end-->
+    <!-- KCN 5D -->
+    <scene name="scene_nha_o_cong_nhan_5d" title="Nhà ở công nhân 5D 20m" onstart="js(activeMasterplane(overview1));js(info('nha_o_cn'));js(setTextHoverHotspot());" thumburl="panos/KDC_5D/view_khu_nha_o_cong_nhan_5D_20m.tiles/thumb.jpg" lat="11.25948278" lng="106.59693444" heading="0.0">
+
+        <view hlookat="-302.955" vlookat="25.891" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5D/view_khu_nha_o_cong_nhan_5D_20m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5D/view_khu_nha_o_cong_nhan_5D_20m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="83.010" atv="-3.553" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_sb_5d" title="Sân bóng đá 5D 20m" onstart="js(activeMasterplane(overview1));js(info('san_bong'));js(setTextHoverHotspot());" thumburl="panos/KDC_5D/view_san_bong_khu_dan_cu_5D_20m.tiles/thumb.jpg" lat="11.25895778" lng="106.59420444" heading="0.0">
+
+        <view hlookat="-6.932" vlookat="16.022" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5D/view_san_bong_khu_dan_cu_5D_20m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5D/view_san_bong_khu_dan_cu_5D_20m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="167.623" atv="-2.710" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_vh_tdtt_60m" title="Trung tâm VH-TDTT (60m)" onstart="js(activeMasterplane(overview1));js(info('vh_tdtt'));js(setTextHoverHotspot());" thumburl="panos/KDC_5D/view_trung_tam_the_duc_the_thao_Bau_Bang_60m.tiles/thumb.jpg" lat="11.24841917" lng="106.60730222" heading="0.0">
+
+        <view hlookat="44.746" vlookat="35.966" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5D/view_trung_tam_the_duc_the_thao_Bau_Bang_60m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5D/view_trung_tam_the_duc_the_thao_Bau_Bang_60m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="160.745" atv="-0.771" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_vh_tdtt" ath="78.048" atv="23.087" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trung tâm VH-TDTT',hotspottextstyle);" onclick="loadscene(scene_vh_tdtt,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+    </scene>
+
+    <scene name="scene_vh_tdtt" title="Trung tâm VH-TDTT" onstart="js(activeMasterplane(overview1));js(info('vh_tdtt'));js(setTextHoverHotspot());" thumburl="panos/KDC_5D/view_trung_tam_the_duc_the_thao_Bau_Bang.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="6.143" vlookat="-3.618" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5D/view_trung_tam_the_duc_the_thao_Bau_Bang.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5D/view_trung_tam_the_duc_the_thao_Bau_Bang.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_vh_tdtt_60m" ath="-91.259" atv="-18.357" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Trung tâm VH-TDTT (60m)',hotspottextstyle);" onclick="loadscene(scene_vh_tdtt_60m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+    </scene>
+    <!-- KCN 5D end-->
+    <!-- KCN 5E -->
+    <scene name="scene_nha_o_cong_nhan_5e_20m" title="Nhà ở công nhân 5E 20m" onstart="js(activeMasterplane(overview1));js(info('nha_o_cn'));js(setTextHoverHotspot());" thumburl="panos/KDC_5E/view_khu_nha_o_cong_nhan_5E_20m.tiles/thumb.jpg" lat="11.24336194" lng="106.61221500" heading="0.0">
+
+        <view hlookat="-120.917" vlookat="15.609" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5E/view_khu_nha_o_cong_nhan_5E_20m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5E/view_khu_nha_o_cong_nhan_5E_20m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="54.769" atv="-0.537" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_khu_xu_ly_nuoc_thai_bau_bang_30m" title="Trạm bơm chuyển cấp nước thải 30m" onstart="js(activeMasterplane(overview1));js(info('KCN_Becamex'));js(setTextHoverHotspot());" thumburl="panos/KCN_Bau_Bang/view_khu_xu_ly_nuoc_thai_KNC_Bau_Bang_30m.tiles/thumb.jpg" lat="11.24317139" lng="106.60729056" heading="0.0">
+
+        <view hlookat="-2.165" vlookat="33.588" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KCN_Bau_Bang/view_khu_xu_ly_nuoc_thai_KNC_Bau_Bang_30m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KCN_Bau_Bang/view_khu_xu_ly_nuoc_thai_KNC_Bau_Bang_30m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="150.863" atv="-4.570" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nm_xlnt" ath="45.816" atv="43.160" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_nm_xlnt,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_nm_xlnt" title="Khu xử lý nước thải" onstart="js(activeMasterplane(overview1));js(info('nm_xlnt'));js(setTextHoverHotspot());" thumburl="panos/KDC_5E/view_nha_may_xu_ly_nuoc_thai.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="-0.742" vlookat="-0.172" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5E/view_nha_may_xu_ly_nuoc_thai.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5E/view_nha_may_xu_ly_nuoc_thai.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_khu_xu_ly_nuoc_thai_bau_bang_30m" ath="-142.172" atv="-9.057" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_khu_xu_ly_nuoc_thai_bau_bang_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+    <!-- KCN 5E end-->
+    <!-- KCN 5F -->
+    <scene name="scene_nha_o_cong_nhan_5F_20m" title="Nhà ở công nhân 5F 20m" onstart="js(activeMasterplane(overview1));js(info('nha_o_cn'));js(setTextHoverHotspot());" thumburl="panos/KDC_5F/view_nha_o_cong_nhan_5F_20m.tiles/thumb.jpg" lat="11.27489861" lng="106.58955944" heading="0.0">
+
+        <view hlookat="-55.710" vlookat="24.190" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5F/view_nha_o_cong_nhan_5F_20m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5F/view_nha_o_cong_nhan_5F_20m.tiles/pano_%s.jpg" />
+        </image>
+
+    </scene>
+
+    <scene name="scene_VNTT" title="VNTT" onstart="js(activeMasterplane(overview1));js(info('vntt'));js(setTextHoverHotspot());" thumburl="panos/KDC_5F/view_VNTT.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5F/view_VNTT.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5F/view_VNTT.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_2" ath="-7.007" atv="-19.051" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 2)',hotspottextstyle);" onclick="loadscene(scene_overview_2,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+    </scene>
+
+    <scene name="scene_dca" title="Đồn công an" onstart="js(activeMasterplane(overview1));js(info('ca'));js(setTextHoverHotspot());" thumburl="panos/KDC_5F/view___on_cong_an_KCN.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/KDC_5F/view___on_cong_an_KCN.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/KDC_5F/view___on_cong_an_KCN.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_2" ath="-22.415" atv="-17.855" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 2)',hotspottextstyle);" onclick="loadscene(scene_overview_2,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+    </scene>
+    <!-- KCN 5F end-->
+    <!-- KCN Khu Lai Hung Residential commue -->
+    <scene name="scene_nha_o_cong_nhan_lai_hung_20m" title="Nhà ở công nhân Lai Hưng (20m)" onstart="js(activeMasterplane(overview1));js(info('nha_o_cn'));js(setTextHoverHotspot());" thumburl="panos/Khu_Lai_Hung_Residential_commue/view_khu_nha_o_cong_nhan_Lai_Hung_20m.tiles/thumb.jpg" lat="11.23235528" lng="106.63079306" heading="0.0">
+
+        <view hlookat="2.709" vlookat="22.018" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/Khu_Lai_Hung_Residential_commue/view_khu_nha_o_cong_nhan_Lai_Hung_20m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/Khu_Lai_Hung_Residential_commue/view_khu_nha_o_cong_nhan_Lai_Hung_20m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="-129.202" atv="-1.588" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nha_o_cong_nhan_lai_hung_2_20m" ath="86.000" atv="3.126" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà ở công nhân Lai Hưng 2 (20m)',hotspottextstyle);" onclick="loadscene(scene_nha_o_cong_nhan_lai_hung_2_20m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+    </scene>
+
+    <scene name="scene_nha_o_cong_nhan_Lai_Hung_2_20m" title="Nhà ở công nhân Lai Hưng 2 (20m)" onstart="js(activeMasterplane(overview1));js(info('nha_o_cn'));js(setTextHoverHotspot());" thumburl="panos/Khu_Lai_Hung_Residential_commue/view_khu_nha_o_cong_nhan_Lai_Hung_2_20m.tiles/thumb.jpg" lat="11.25984333" lng="106.62743333" heading="0.0">
+
+        <view hlookat="178.130" vlookat="19.162" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/Khu_Lai_Hung_Residential_commue/view_khu_nha_o_cong_nhan_Lai_Hung_2_20m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/Khu_Lai_Hung_Residential_commue/view_khu_nha_o_cong_nhan_Lai_Hung_2_20m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_nha_o_cong_nhan_lai_hung_20m" ath="-173.455" atv="-1.795" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà ở công nhân Lai Hưng (20m)',hotspottextstyle);" onclick="loadscene(scene_nha_o_cong_nhan_lai_hung_20m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+    </scene>
+
+    <scene name="scene_nha_o_xa_hoi_lai_hung_30m" title="Nhà ở xã hội (30m)" onstart="js(activeMasterplane(overview1));js(info('nha_o_xh'));js(setTextHoverHotspot());" thumburl="panos/Khu_Lai_Hung_Residential_commue/view_nha_o_xa_hoi_khu_Lai_Hung_30m.tiles/thumb.jpg" lat="11.22657889" lng="106.63134944" heading="0.0">
+
+        <view hlookat="-31.994" vlookat="21.921" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/Khu_Lai_Hung_Residential_commue/view_nha_o_xa_hoi_khu_Lai_Hung_30m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/Khu_Lai_Hung_Residential_commue/view_nha_o_xa_hoi_khu_Lai_Hung_30m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="-15.349" atv="-3.684" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_shop_toc" ath="74.712" atv="29.170" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Shop tóc',hotspottextstyle);" onclick="loadscene(scene_shop_toc,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+        <hotspot name="hotspot_nha_o_xa_hoi" ath="-15.502" atv="22.089" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà ở xã hội',hotspottextstyle);" onclick="loadscene(scene_nha_o_xa_hoi,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+
+    </scene>
+
+    <scene name="scene_shop_toc" title="Shop tóc " onstart="js(activeMasterplane(overview1));js(info('shop_toc'));js(setTextHoverHotspot());" thumburl="panos/Khu_Lai_Hung_Residential_commue/view_nha_o_xa_hoi_1_.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="119.025" vlookat="12.733" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/Khu_Lai_Hung_Residential_commue/view_nha_o_xa_hoi_1_.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/Khu_Lai_Hung_Residential_commue/view_nha_o_xa_hoi_1_.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_nha_o_xa_hoi_lai_hung_30m" ath="31.944" atv="-11.165" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà ở xã hội (30m)',hotspottextstyle);" onclick="loadscene(scene_nha_o_xa_hoi_lai_hung_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+    </scene>
+
+    <scene name="scene_nha_o_xa_hoi" title="Nhà ở xã hội" onstart="js(activeMasterplane(overview1));js(info('nha_o_xh'));js(setTextHoverHotspot());" thumburl="panos/Khu_Lai_Hung_Residential_commue/view_nha_o_xa_hoi_2.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="97.249" vlookat="5.892" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/Khu_Lai_Hung_Residential_commue/view_nha_o_xa_hoi_2.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/Khu_Lai_Hung_Residential_commue/view_nha_o_xa_hoi_2.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_nha_o_xa_hoi_lai_hung_30m" ath="-153.330" atv="-3.666" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà ở xã hội (30m)',hotspottextstyle);" onclick="loadscene(scene_nha_o_xa_hoi_lai_hung_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_nha_may_bw_30m" title="Nhà máy BW (30m)" onstart="js(activeMasterplane(overview1));js(info('bw'));js(setTextHoverHotspot());" thumburl="panos/Khu_Lai_Hung_Residential_commue/view_nha_xuong_cho_thue_BW_30m.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="-173.983" vlookat="19.808" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/Khu_Lai_Hung_Residential_commue/view_nha_xuong_cho_thue_BW_30m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/Khu_Lai_Hung_Residential_commue/view_nha_xuong_cho_thue_BW_30m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="-119.395" atv="-5.724" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_nha_may_bw_1" ath="-124.880" atv="6.652" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy BW (1)',hotspottextstyle);" onclick="loadscene(scene_nha_may_bw_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+    </scene>
+
+    <scene name="scene_nha_may_bw_1" title="Nhà máy BW (1)" onstart="js(activeMasterplane(overview1));js(info('bw'));js(setTextHoverHotspot());" thumburl="panos/Khu_Lai_Hung_Residential_commue/view_nha_xuong_cho_thue_BW_2.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="4.623" vlookat="-5.995" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/Khu_Lai_Hung_Residential_commue/view_nha_xuong_cho_thue_BW_2.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/Khu_Lai_Hung_Residential_commue/view_nha_xuong_cho_thue_BW_2.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_nha_may_bw_2" ath="13.034" atv="-3.724" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy BW (2)',hotspottextstyle);" onclick="loadscene(scene_nha_may_bw_2,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+        <hotspot name="hotspot_nha_may_bw_30m" ath="-78.338" atv="-18.390" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_nha_may_bw_30m,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+    </scene>
+
+    <scene name="scene_nha_may_bw_2" title="Nhà máy BW (2)" onstart="js(activeMasterplane(overview1));js(info('bw'));js(setTextHoverHotspot());" thumburl="panos/Khu_Lai_Hung_Residential_commue/view_nha_xuong_cho_thue_BW_1.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="-43.738" vlookat="-3.205" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/Khu_Lai_Hung_Residential_commue/view_nha_xuong_cho_thue_BW_1.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/Khu_Lai_Hung_Residential_commue/view_nha_xuong_cho_thue_BW_1.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_nha_may_bw_1" ath="-36.778" atv="-1.447" style="skin_right" onhover="showtext('Nhà máy BW (1)',hotspottextstyle);" onclick="loadscene(scene_nha_may_bw_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+        <hotspot name="hotspot_nha_may_bw_vp" ath="67.520" atv="-0.724" style="skin_left" onhover="showtext('Nhà máy BW văn phòng',hotspottextstyle);" onclick="loadscene(scene_nha_may_bw_vp,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+    </scene>
+
+    <scene name="scene_nha_may_bw_vp" title="Nhà máy BW văn phòng" onstart="js(activeMasterplane(overview1));js(info('bw'));js(setTextHoverHotspot());" thumburl="panos/Khu_Lai_Hung_Residential_commue/view_van_phong_nha_xuong_BW.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="-43.738" vlookat="-3.205" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/Khu_Lai_Hung_Residential_commue/view_van_phong_nha_xuong_BW.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/Khu_Lai_Hung_Residential_commue/view_van_phong_nha_xuong_BW.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_nha_may_bw_2" ath="145.637" atv="0.486" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Nhà máy BW (2)',hotspottextstyle);" onclick="loadscene(scene_nha_may_bw_2,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))" />
+    </scene>
+
+    <scene name="scene_san_bong_lai_hung_20m" title="Sân bóng đá Lai Hưng (20m)" onstart="js(activeMasterplane(overview1));js(info('san_bong'));js(setTextHoverHotspot());" thumburl="panos/Khu_Lai_Hung_Residential_commue/view_san_bong_khu_dan_cu_Lai_Hung_20m.tiles/thumb.jpg" lat="11.22993722" lng="106.63189250" heading="0.0">
+
+        <view hlookat="-40.589" vlookat="17.431" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/Khu_Lai_Hung_Residential_commue/view_san_bong_khu_dan_cu_Lai_Hung_20m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/Khu_Lai_Hung_Residential_commue/view_san_bong_khu_dan_cu_Lai_Hung_20m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="-132.715" atv="-2.264" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_truong_tieu_hoc_kim_dong" title="Trường tiểu học Kim Đồng (15m)" onstart="js(activeMasterplane(overview1));js(info('kim_dong'));js(setTextHoverHotspot());" thumburl="panos/Khu_Lai_Hung_Residential_commue/view_truong_tieu_hoc_Kim_Dong_15m.tiles/thumb.jpg" lat="11.22345444" lng="106.62926111" heading="0.0">
+
+        <view hlookat="181.679" vlookat="14.440" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/Khu_Lai_Hung_Residential_commue/view_truong_tieu_hoc_Kim_Dong_15m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/Khu_Lai_Hung_Residential_commue/view_truong_tieu_hoc_Kim_Dong_15m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="156.536" atv="-7.825" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+    <!-- KCN Khu Lai Hung Residential commue end-->
+    <!-- Trục đường chính -->
+    <scene name="scene_view_truc_duong_chinh_1" title="view truc duong chinh (1)" onstart="js(activeMasterplane(overview1));js(info(''));js(setTextHoverHotspot());" thumburl="panos/overview/view_truc_duong_chinh_(1).tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="-187.081" vlookat="3.358" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/overview/view_truc_duong_chinh_(1).tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/overview/view_truc_duong_chinh_(1).tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_overview_1" ath="173.944" atv="-11.345" url="skin/hotspot2.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('KCN Becamex - Bàu Bàng (view 1)',hotspottextstyle);" onclick="loadscene(scene_overview_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_truc_duong_chinh_2" style="skin_hotspotstyle" ath="175.612" atv="13.599" onhover="showtext('Trục đường chính (2)',hotspottextstyle);" onclick="loadscene(scene_view_truc_duong_chinh_2,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_cong_kcn_bau_bang" style="skin_hotspotstyle" ath="-4.593" atv="12.784" onhover="showtext('Cổng khu công nghiệp bầu bàng',hotspottextstyle);" onclick="loadscene(scene_cong_kcn_bau_bang,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_ngan_hang" ath="-160.695" atv="-5.804" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Ngân hàng',hotspottextstyle);"/>
+        <hotspot name="hotspot_van_phong_bql" ath="-166.746" atv="-4.164" url="skin/hotspot.png" onloaded="do_crop_animation(128,112,4);" scale='0.5' zoom="true" onhover="showtext('Văn phòng BQL',hotspottextstyle);"/>
+
+    </scene>
+
+    <scene name="scene_view_truc_duong_chinh_2" title="view truc duong chinh (2)" onstart="js(activeMasterplane(overview1));js(info(''));js(setTextHoverHotspot());" thumburl="panos/overview/view_truc_duong_chinh_(2).tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="-186.438" vlookat="-2.226" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/overview/view_truc_duong_chinh_(2).tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/overview/view_truc_duong_chinh_(2).tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_truc_duong_chinh_1" style="skin_hotspotstyle" ath="-1.818" atv="15.121" onhover="showtext('Trục đường chính (1)',hotspottextstyle);" onclick="loadscene(scene_view_truc_duong_chinh_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_truc_duong_chinh_3" style="skin_hotspotstyle" ath="176.435" atv="13.843" onhover="showtext('Trục đường chính (3)',hotspottextstyle);" onclick="loadscene(scene_view_truc_duong_chinh_3,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_view_truc_duong_chinh_3" title="view truc duong chinh (3)" onstart="js(activeMasterplane(overview1));js(info(''));js(setTextHoverHotspot());" thumburl="panos/overview/view_truc_duong_chinh_(3).tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="-118.171" vlookat="-1.204" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/overview/view_truc_duong_chinh_(3).tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/overview/view_truc_duong_chinh_(3).tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_truc_duong_chinh_2" style="skin_hotspotstyle" ath="5.327" atv="11.629" onhover="showtext('Trục đường chính (2)',hotspottextstyle);" onclick="loadscene(scene_view_truc_duong_chinh_2,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_truc_duong_chinh_4" style="skin_hotspotstyle" ath="-114.639" atv="17.449" onhover="showtext('Trục đường chính (4)',hotspottextstyle);" onclick="loadscene(scene_view_truc_duong_chinh_4,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_view_truc_duong_chinh_4" title="view truc duong chinh (4)" onstart="js(activeMasterplane(overview1));js(info(''));js(setTextHoverHotspot());" thumburl="panos/overview/view_truc_duong_chinh_(4).tiles/thumb.jpg" lat="11.28513000" lng="106.60022500" heading="0.0">
+
+        <view hlookat="-77.753" vlookat="3.186" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/overview/view_truc_duong_chinh_(4).tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/overview/view_truc_duong_chinh_(4).tiles/pano_%s.jpg" />
+        </image>
+
+        <hotspot name="hotspot_truc_duong_chinh_3" style="hotspot5" ath="-98.605" atv="20.759" onhover="showtext('Trục đường chính (3)',hotspottextstyle);" onclick="loadscene(scene_view_truc_duong_chinh_3,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="hotspot_truc_duong_chinh_5" style="hotspot3" ath="-88.101" atv="23.037" onhover="showtext('Trục đường chính (5)',hotspottextstyle);" onclick="loadscene(scene_view_truc_duong_chinh_5,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+
+    <scene name="scene_view_truc_duong_chinh_5" title="view truc duong chinh (5)" onstart="js(activeMasterplane(overview1));js(info(''));js(setTextHoverHotspot());" thumburl="panos/overview/view_truc_duong_chinh_(5).tiles/thumb.jpg" lat="11.27973694" lng="106.57343528" heading="0.0">
+
+        <view hlookat="-141.867" vlookat="23.816" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/overview/view_truc_duong_chinh_(5).tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/overview/view_truc_duong_chinh_(5).tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_truc_duong_chinh_4" style="skin_hotspotstyle" ath="-179.798" atv="22.255" onhover="showtext('Trục đường chính (4)',hotspottextstyle);" onclick="loadscene(scene_view_truc_duong_chinh_4,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+        <hotspot name="lo_c_11_cn" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('C-11-CN: ~13,8 ha',hotspottextstyle); set(hotspot[lo_c_11_cn].fillalpha, 0.7)" onout="set(hotspot[lo_c_11_cn].fillalpha, 0)" onclick="js(infoLodat(lo_c_11_cn));">
+
+            <point ath="-88.88" atv="17.26" />
+            <point ath="-73.13" atv="15.96" />
+            <point ath="-66.84" atv="21.47" />
+            <point ath="-54.27" atv="19.10" />
+            <point ath="-48.17" atv="23.54" />
+            <point ath="-87.17" atv="29.64" />
+            <point ath="-88.88" atv="17.26" />
+        </hotspot>
+
+        <hotspot name="lo_c_12_cn" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('C-12-CN: ~15 ha',hotspottextstyle); set(hotspot[lo_c_12_cn].fillalpha, 0.7)" onout="set(hotspot[lo_c_12_cn].fillalpha, 0)" onclick="js(infoLodat(lo_c_12_cn));">
+
+            <point ath="-55.96" atv="27.73" />
+            <point ath="-28.05" atv="15.76" />
+            <point ath="-3.06" atv="18.71" />
+            <point ath="-5.92" atv="42.38" />
+            <point ath="-55.96" atv="27.73" />
+
+        </hotspot>
+
+        <hotspot name="lo_c_13_cn" keep="false" visible="true" enabled="true" handcursor="true" capture="true" blendmode="normal" style="" alpha="1.0" autoalpha="false" polyline="false" fillcolor="0x6b2a5b" fillalpha="0.0" borderwidth="0" bordercolor="0x6b2a5b" borderalpha="0" subdiv="true" onhover="showtext('C-13-CN: ~16,3 ha',hotspottextstyle); set(hotspot[lo_c_13_cn].fillalpha, 0.7)" onout="set(hotspot[lo_c_13_cn].fillalpha, 0)" onclick="js(infoLodat(lo_c_13_cn));">
+
+            <point ath="0.12" atv="42.48" />
+            <point ath="0.36" atv="18.13" />
+            <point ath="24.79" atv="15.69" />
+            <point ath="54.99" atv="28.28" />
+            <point ath="0.12" atv="42.48" />
+        </hotspot>
+    </scene>
+
+    <scene name="scene_cong_kcn_bau_bang" title="cong kcn bau bang 20m" onstart="js(activeMasterplane(overview1));js(info(''));js(setTextHoverHotspot());" thumburl="panos/overview/cong_kcn_bau_bang_20m.tiles/thumb.jpg" lat="11.24305556" lng="106.63758333" heading="0.0">
+
+        <view hlookat="38.954" vlookat="24.024" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/overview/cong_kcn_bau_bang_20m.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/overview/cong_kcn_bau_bang_20m.tiles/pano_%s.jpg" />
+        </image>
+        <hotspot name="hotspot_truc_duong_chinh_1" style="skin_hotspotstyle" ath="40.994" atv="43.992" onhover="showtext('Trục đường chính (1)',hotspottextstyle);" onclick="loadscene(scene_view_truc_duong_chinh_1,null,MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear))"/>
+
+    </scene>
+</krpano>
